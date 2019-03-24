@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-EDU-Codeforces-62" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/24/EDU-Codeforces-62/" class="article-date">
+  <time datetime="2019-03-24T08:35:58.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/24/EDU-Codeforces-62/">EDU Codeforces 62</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="比赛总结"><a href="#比赛总结" class="headerlink" title="比赛总结"></a>比赛总结</h2><p>2/7 比赛当中做出A、D题，B赛后补完</p>
+<p>##题解<br>A<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n, a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j] &lt;= i) cur++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cur == i) ans++;</span><br><span class="line">        cur = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="comment">//scanf("%d", &amp;n);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>B<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 105</span></span><br><span class="line"><span class="keyword">int</span> T,n;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> ans=n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">if</span>(s[i]==<span class="string">'&gt;'</span>)ans=min(ans,i<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;--i)<span class="keyword">if</span>(s[i]==<span class="string">'&lt;'</span>)ans=min(ans,n-i);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>D<br>最优三角剖分，不过好像有一个显而易见的结论</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">510</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n; </span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> d[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">w</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i*j*k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="built_in">memset</span>(d, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        d[i][i+<span class="number">2</span>] = w(i, i+<span class="number">1</span>, i+<span class="number">2</span>);</span><br><span class="line">        d[i][i] = <span class="number">0</span>;</span><br><span class="line">        d[i][i+<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-2</span>; i &gt;= <span class="number">1</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">2</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = i+<span class="number">1</span>; k &lt; j; k++)&#123;</span><br><span class="line">                <span class="comment">//d[i][j] = inf;</span></span><br><span class="line">                d[i][j] = min(d[i][j], d[i][k]+d[k][j]+w(i, j, k));</span><br><span class="line">                <span class="comment">//printf("%d %d %d\n", d[i][j], d[i][k], d[k][j]);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d"</span>, d[<span class="number">1</span>][n]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/24/EDU-Codeforces-62/" data-id="cjtmobo8h0007vwupsqfcvkhh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-POJ3263" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/24/POJ3263/" class="article-date">
@@ -91,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/POJ3263/" data-id="cjtmlefq30007swup8kdnh0dq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/POJ3263/" data-id="cjtmobo8e0004vwupwiig50lj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/BZOJ1218/" data-id="cjtmlefq20006swupwfldolx7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/BZOJ1218/" data-id="cjtmobo840000vwupnpk52rsa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/POJ-1995/" data-id="cjtmlefpr0000swupmiofls6o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/POJ-1995/" data-id="cjtmobo8a0001vwupl1civaa4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/LA4108/" data-id="cjtmlefpw0001swup8bwcogy5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/LA4108/" data-id="cjtmobo8d0003vwuplw9gp4y4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/UVa-12299/" data-id="cjtmlefpz0003swupn48qshdr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/UVa-12299/" data-id="cjtmobo8f0005vwupdjlg18cm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/LA2191/" data-id="cjtmlefpy0002swup8d864ajc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/LA2191/" data-id="cjtmobo8i0008vwupf6kpllpq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/UVa-11732/" data-id="cjtmlefq10005swuptxe8cmqb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/UVa-11732/" data-id="cjtmobo8c0002vwupkn6eu5pn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -366,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/hello-world/" data-id="cjtmlefpz0004swupeiefteqf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/hello-world/" data-id="cjtmobo8g0006vwup9xczcua6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,6 +448,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/24/EDU-Codeforces-62/">EDU Codeforces 62</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/24/POJ3263/">POJ3263</a>
           </li>
         
@@ -420,10 +465,6 @@
         
           <li>
             <a href="/2019/03/24/LA4108/">LA4108</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/UVa-12299/">UVa 12299</a>
           </li>
         
       </ul>
