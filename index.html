@@ -62,6 +62,117 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-POJ-3974" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/21/POJ-3974/" class="article-date">
+  <time datetime="2019-04-21T13:42:55.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/POJ-3974/">POJ 3974</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/21/POJ-3974/" data-id="cjuqzl3bn00044wupz6qadz66" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-POJ-3764" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/21/POJ-3764/" class="article-date">
+  <time datetime="2019-04-21T13:34:32.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/POJ-3764/">POJ 3764</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##题意<br>给定一个N个节点的树，树的每条边上有一个权值，从树中选出两点x和y，把从x到y的路径上的所有边权xor起来，得到的最大结果是多少？</p>
+<p>##解法<br>设D[x]表示根节点到x的路径上所有的边权xor值，显然有：<br>D[x] = D[father(x)] xor weight(x, father(X))<br>求x到y的路径上所有边权xor起来，就是D[x] xor D[y]。<br>用一棵Trie树存D[1],D[2]…D[N]，快速求解两两异或最大值。</p>
+<p>##代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxnode = <span class="number">1e6</span> + <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> d[maxn];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> from, to, dist;</span><br><span class="line">    Edge(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w):from(u), to(v), dist(w)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Edge&gt; edges;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> vis[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        edges.clear();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxn; i++) G[i].clear();</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> dist)</span></span>&#123;</span><br><span class="line">        edges.push_back(Edge(from, to, dist));</span><br><span class="line">        m = edges.size();</span><br><span class="line">        G[from].push_back(m<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">return</span>;</span><br><span class="line">        vis[v] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[v].size(); i++)&#123;</span><br><span class="line">            <span class="comment">//printf("1\n");</span></span><br><span class="line">            <span class="keyword">if</span>(!vis[edges[G[v][i]].to])&#123;</span><br><span class="line">                d[edges[G[v][i]].to] = d[v]^edges[G[v][i]].dist;</span><br><span class="line">                dfs(edges[G[v][i]].to);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> ch[<span class="number">4</span>*maxnode][<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> sz;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;sz = <span class="number">1</span>; <span class="built_in">memset</span>(ch[<span class="number">0</span>], <span class="number">0</span>, <span class="keyword">sizeof</span>(ch[<span class="number">0</span>])); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> _insert(<span class="keyword">int</span> x)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!ch[u][c])&#123;</span><br><span class="line">                <span class="built_in">memset</span>(ch[sz], <span class="number">0</span>, <span class="keyword">sizeof</span>(ch[sz]));</span><br><span class="line">                ch[u][c] = sz++;</span><br><span class="line">            &#125;</span><br><span class="line">            u = ch[u][c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> _query(<span class="keyword">int</span> x)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(ch[u][c^<span class="number">1</span>])&#123;</span><br><span class="line">                ans |=  (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">                u = ch[u][c^<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                u = ch[u][c];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Graph G;</span><br><span class="line">Trie t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> u, w, v;</span><br><span class="line">        G.init();</span><br><span class="line">        t.init();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            G.addedge(u, v, w);</span><br><span class="line">            G.addedge(v, u, w);</span><br><span class="line">        &#125;</span><br><span class="line">        d[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        G.dfs(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            t._insert(d[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            ans = max(ans, t._query(d[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/21/POJ-3764/" data-id="cjuqzl3bo00054wupdg5zt939" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Comet-OJ-0" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/02/Comet-OJ-0/" class="article-date">
+  <time datetime="2019-04-02T14:50:45.000Z" itemprop="datePublished">2019-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/02/Comet-OJ-0/">Comet OJ 0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="标题1"><a href="#标题1" class="headerlink" title="标题1"></a>标题1</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/02/Comet-OJ-0/" data-id="cjuqzl3be00004wupv9ergaoo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-EDU-Codeforces-62" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/24/EDU-Codeforces-62/" class="article-date">
@@ -93,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/EDU-Codeforces-62/" data-id="cjtmobo8h0007vwupsqfcvkhh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/EDU-Codeforces-62/" data-id="cjuqzl3bm00034wup4hftnio2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/POJ3263/" data-id="cjtmobo8e0004vwupwiig50lj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/POJ3263/" data-id="cjuqzl3br00084wupoylz0w25" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/BZOJ1218/" data-id="cjtmobo840000vwupnpk52rsa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/BZOJ1218/" data-id="cjuqzl3bj00014wupk0f3azz2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/POJ-1995/" data-id="cjtmobo8a0001vwupl1civaa4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/POJ-1995/" data-id="cjuqzl3bp00064wupaf95kodf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/LA4108/" data-id="cjtmobo8d0003vwuplw9gp4y4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/LA4108/" data-id="cjuqzl3bq00074wuprs3890jd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/UVa-12299/" data-id="cjtmobo8f0005vwupdjlg18cm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/UVa-12299/" data-id="cjuqzl3bs00094wupe1nq6kk9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,89 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/LA2191/" data-id="cjtmobo8i0008vwupf6kpllpq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-UVa-11732" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/17/UVa-11732/" class="article-date">
-  <time datetime="2019-01-17T11:07:53.000Z" itemprop="datePublished">2019-01-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/UVa-11732/">UVa 11732</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// UVa11732 strcmp() Anyone?</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;    </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxnode = <span class="number">4000</span> * <span class="number">1000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> sigma_size = <span class="number">26</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 字母表为全体小写字母的Trie</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> head[maxnode]; <span class="comment">// head[i]为第i个结点的左儿子编号</span></span><br><span class="line">    <span class="keyword">int</span> next[maxnode]; <span class="comment">// next[i]为第i个结点的右兄弟编号</span></span><br><span class="line">    <span class="keyword">char</span> ch[maxnode];  <span class="comment">// ch[i]为第i个结点上的字符</span></span><br><span class="line">    <span class="keyword">int</span> tot[maxnode];  <span class="comment">// tot[i]为第i个结点为根的子树包含的叶结点总数</span></span><br><span class="line">    <span class="keyword">int</span> sz; <span class="comment">// 结点总数</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans; <span class="comment">// 答案</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; sz = <span class="number">1</span>; tot[<span class="number">0</span>] = head[<span class="number">0</span>] = next[<span class="number">0</span>]= <span class="number">0</span>; &#125; <span class="comment">// 初始时只有一个根结点</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 插入字符串s（包括最后的'\0'），沿途更新tot</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> u = <span class="number">0</span>, v, n = <span class="built_in">strlen</span>(s);</span><br><span class="line">      tot[<span class="number">0</span>]++;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="comment">// 找字符a[i]</span></span><br><span class="line">        <span class="keyword">bool</span> found = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(v = head[u]; v != <span class="number">0</span>; v = next[v])</span><br><span class="line">          <span class="keyword">if</span>(ch[v] == s[i]) &#123; <span class="comment">// 找到了</span></span><br><span class="line">            found = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">if</span>(!found) &#123;</span><br><span class="line">          v = sz++; <span class="comment">// 新建结点</span></span><br><span class="line">          tot[v] = <span class="number">0</span>;</span><br><span class="line">          ch[v] = s[i];</span><br><span class="line">          next[v] = head[u];</span><br><span class="line">          head[u] = v; <span class="comment">// 插入到链表的首部</span></span><br><span class="line">          head[v] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        u = v;</span><br><span class="line">        tot[u]++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// 统计LCP=u的所有单词两两的比较次数之和</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> depth, <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head[u] == <span class="number">0</span>) <span class="comment">// 叶结点</span></span><br><span class="line">      ans += tot[u] * (tot[u] - <span class="number">1</span>) * depth;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> v = head[u]; v != <span class="number">0</span>; v = next[v])</span><br><span class="line">        sum += tot[v] * (tot[u] - tot[v]); <span class="comment">// 子树v中选一个串，其他子树中再选一个</span></span><br><span class="line">        ans += sum / <span class="number">2</span> * (<span class="number">2</span> * depth + <span class="number">1</span>); <span class="comment">// 除以2是每种选法统计了两次</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v = head[u]; v != <span class="number">0</span>; v = next[v])</span><br><span class="line">          dfs(depth+<span class="number">1</span>, v);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// 统计</span></span><br><span class="line">  <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">count</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">    dfs(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">1000</span> + <span class="number">10</span>;   <span class="comment">// 每个单词最大长度</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> word[maxl];</span><br><span class="line">Trie trie;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> kase = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) == <span class="number">1</span> &amp;&amp; n) &#123;</span><br><span class="line">    trie.clear();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</span><br><span class="line">      trie.insert(word);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Case %d: %lld\n"</span>, kase++, trie.count());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/UVa-11732/" data-id="cjtmobo8c0002vwupkn6eu5pn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/17/hello-world/" class="article-date">
-  <time datetime="2019-01-17T08:37:27.628Z" itemprop="datePublished">2019-01-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/hello-world/" data-id="cjtmobo8g0006vwup9xczcua6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/LA2191/" data-id="cjuqzl3bl00024wupx2rj9zzd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,6 +447,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -435,7 +469,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -448,23 +482,23 @@
       <ul>
         
           <li>
+            <a href="/2019/04/21/POJ-3974/">POJ 3974</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/21/POJ-3764/">POJ 3764</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/02/Comet-OJ-0/">Comet OJ 0</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/24/EDU-Codeforces-62/">EDU Codeforces 62</a>
           </li>
         
           <li>
             <a href="/2019/03/24/POJ3263/">POJ3263</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/BZOJ1218/">BZOJ1218</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/POJ-1995/">POJ 1995</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/LA4108/">LA4108</a>
           </li>
         
       </ul>
